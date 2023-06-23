@@ -28,7 +28,9 @@ function App() {
     return (
         <main className={style.app}>
             <div className={style.calculator}>
-                <div className={style.screen}>{expression}</div>
+                <p data-testid='expression' className={style.screen}>
+                    {expression}
+                </p>
                 <div className={style.buttons}>
                     <button
                         onClick={() => typeNoNum('par')}
