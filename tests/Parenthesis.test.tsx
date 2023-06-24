@@ -47,4 +47,38 @@ describe('Operations using parenthesis tests', () => {
 
         expect(expScreen.innerHTML).toBe('124')
     })
+
+    test('4 x (4 + 4)', () => {
+        const events = [
+            fourButton,
+            multButton,
+            parButton,
+            fourButton,
+            plusButton,
+            fourButton,
+            parButton,
+            equalToButton,
+        ]
+
+        consecClickEvents(events)
+
+        expect(expScreen.innerHTML).toBe('32')
+    })
+
+    test('(3 + 3) ÷ 4', () => {
+        const events = [
+            parButton,
+            threeButton,
+            plusButton,
+            threeButton,
+            parButton,
+            divButton,
+            fourButton,
+            equalToButton,
+        ]
+
+        consecClickEvents(events)
+
+        expect(expScreen.innerHTML).toBe('1.5')
+    })
 })
