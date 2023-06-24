@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import style from './App.module.css'
+import { checkNum } from './functions/checkNum'
+import { checkNoNum } from './functions/checkNoNum'
+import { evaluate } from './functions/evaluate'
 
 function App() {
     const [expression, setExpression] = useState('')
@@ -19,11 +22,20 @@ function App() {
     }
 
     // TYPING
-    const typeNum = (num: string) => setExpression(expression + num)
-    const typeNoNum = (nonum: string) => setExpression(expression + nonum)
+    const typeNum = (num: string) => {
+        const check = checkNum(expression, num)
+
+        check && setExpression(expression + check)
+    }
+
+    const typeNoNum = (noNum: string) => {
+        const check = checkNoNum(expression, noNum)
+
+        check && setExpression(expression + check)
+    }
 
     // EQUAL TO
-    const equalTo = () => null
+    const equalTo = () => setExpression(evaluate(expression))
 
     return (
         <main className={style.app}>

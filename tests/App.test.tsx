@@ -53,3 +53,65 @@ describe('Typing tests', () => {
         }
     })
 })
+
+describe('Basic operations tests', () => {
+    let expScreen: HTMLElement
+    let equalToButton: HTMLElement
+    let plusButton: HTMLElement
+    let minusButton: HTMLElement
+    let multButton: HTMLElement
+    let divButton: HTMLElement
+    let threeButton: HTMLElement
+    let fourButton: HTMLElement
+
+    beforeEach(() => {
+        render(<App />)
+
+        expScreen = screen.getByTestId('expression')
+        equalToButton = screen.getByText('=')
+        plusButton = screen.getByText('+')
+        minusButton = screen.getByText('-')
+        multButton = screen.getByText('x')
+        divButton = screen.getByText('÷')
+        threeButton = screen.getByText('3')
+        fourButton = screen.getByText('4')
+    })
+
+    afterEach(() => cleanup())
+
+    test('Addition: 3 + 4', () => {
+        fireEvent.click(threeButton)
+        fireEvent.click(plusButton)
+        fireEvent.click(fourButton)
+        fireEvent.click(equalToButton)
+
+        expect(expScreen.innerHTML).toBe('7')
+    })
+
+    test('Subtraction: 4 - 3', () => {
+        fireEvent.click(fourButton)
+        fireEvent.click(minusButton)
+        fireEvent.click(threeButton)
+        fireEvent.click(equalToButton)
+
+        expect(expScreen.innerHTML).toBe('1')
+    })
+
+    test('Multiplication: 4 x 3', () => {
+        fireEvent.click(fourButton)
+        fireEvent.click(multButton)
+        fireEvent.click(threeButton)
+        fireEvent.click(equalToButton)
+
+        expect(expScreen.innerHTML).toBe('12')
+    })
+
+    test('Division: 3 ÷ 4', () => {
+        fireEvent.click(threeButton)
+        fireEvent.click(divButton)
+        fireEvent.click(fourButton)
+        fireEvent.click(equalToButton)
+
+        expect(expScreen.innerHTML).toBe('0.75')
+    })
+})
