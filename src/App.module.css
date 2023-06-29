@@ -27,7 +27,7 @@
 .screen {
     padding: 0.5rem 0.75rem;
 
-    height: 130px;
+    height: 100%;
     width: 260px;
 
     background: var(--dark);

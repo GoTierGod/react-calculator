@@ -45,6 +45,30 @@ function App() {
                 </p>
                 <div className={style.buttons}>
                     <button
+                        onClick={() => typeNoNum('√')}
+                        className={style.noNum}
+                    >
+                        √
+                    </button>
+                    <button
+                        onClick={() => typeNoNum('π')}
+                        className={style.noNum}
+                    >
+                        π
+                    </button>
+                    <button
+                        onClick={() => typeNoNum('^')}
+                        className={style.noNum}
+                    >
+                        ^
+                    </button>
+                    <button
+                        onClick={() => typeNoNum('!')}
+                        className={style.noNum}
+                    >
+                        !
+                    </button>
+                    <button
                         onClick={() => typeNoNum('par')}
                         className={style.noNum}
                     >
