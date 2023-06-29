@@ -3,7 +3,7 @@ export const checkNoNum = (exp: string, noNum: string) => {
 
     // BASIC OPERATIONS
     if ([' x ', ' - ', ' + ', ' ÷ ', ' ^ '].includes(noNum)) {
-        if (/(\d|\)|!)/.test(lastChar)) {
+        if (/(\d|\)|!|π)/.test(lastChar)) {
             return noNum
         }
     }
@@ -33,6 +33,16 @@ export const checkNoNum = (exp: string, noNum: string) => {
     // SQUARE ROOT
     else if (noNum === '√') {
         if (lastChar === ' ' || lastChar === undefined) return noNum
+    }
+
+    // PI
+    else if (noNum === 'π') {
+        if (
+            (!/\d/.test(lastChar) && lastChar !== '√') ||
+            lastChar === undefined
+        ) {
+            return 'π'
+        }
     }
 
     return false

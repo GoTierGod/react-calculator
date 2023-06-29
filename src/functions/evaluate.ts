@@ -2,7 +2,8 @@ export const evaluate = (exp: string): string => {
     let evaluable: string = exp
         .replace(/÷/g, '/')
         .replace(/x/g, '*')
-        .replace(/\^/, '**')
+        .replace(/\^/g, '**')
+        .replace(/π/g, '3.1416')
 
     const factorials = evaluable.match(/\d+!/g)
     if (factorials) {
@@ -33,5 +34,5 @@ export const evaluate = (exp: string): string => {
 
     const evaluation: number = new Function(`return ${evaluable}`)()
 
-    return evaluation.toString().trim()
+    return String(Number(evaluation.toFixed(3)))
 }
