@@ -30,5 +30,10 @@ export const checkNoNum = (exp: string, noNum: string) => {
         }
     }
 
+    // SQUARE ROOT
+    else if (noNum === '√') {
+        if (lastChar === ' ' || lastChar === undefined) return noNum
+    }
+
     return false
 }

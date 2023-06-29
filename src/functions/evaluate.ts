@@ -21,6 +21,16 @@ export const evaluate = (exp: string): string => {
         }
     }
 
+    const sqrt = evaluable.match(/(√\((.*?)\)|√\d+)/g)
+    if (sqrt) {
+        for (const sr of sqrt) {
+            const exp: string = sr.replace('√', '')
+            const resolvedExp: number = new Function(`return ${exp}`)()
+
+            evaluable = evaluable.replace(sr, String(Math.sqrt(resolvedExp)))
+        }
+    }
+
     const evaluation: number = new Function(`return ${evaluable}`)()
 
     return evaluation.toString().trim()

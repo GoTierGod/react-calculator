@@ -97,6 +97,6 @@ describe('Square root operations', () => {
 
         consecClickEvents(events)
 
-        expect(expScreen.innerHTML).toBe('4')
+        expect(expScreen.innerHTML).toBe('5.5')
     })
 })
