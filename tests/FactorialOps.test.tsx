@@ -80,7 +80,7 @@ describe('Factorial operations', () => {
 
         consecClickEvents(events)
 
-        expect(expScreen.innerHTML).toBe('18')
+        expect(expScreen.innerHTML).toBe('-18')
     })
 
     test('(2! + 3!) x 3!', () => {
@@ -100,7 +100,7 @@ describe('Factorial operations', () => {
 
         consecClickEvents(events)
 
-        expect(expScreen.innerHTML).toBe('24')
+        expect(expScreen.innerHTML).toBe('48')
     })
 
     test('(4! ÷ 3!)', () => {

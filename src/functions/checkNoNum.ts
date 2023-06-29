@@ -3,7 +3,7 @@ export const checkNoNum = (exp: string, noNum: string) => {
 
     // BASIC OPERATIONS
     if ([' x ', ' - ', ' + ', ' ÷ ', ' ^ '].includes(noNum)) {
-        if (/(\d|\))/.test(lastChar)) {
+        if (/(\d|\)|!)/.test(lastChar)) {
             return noNum
         }
     }
@@ -20,6 +20,13 @@ export const checkNoNum = (exp: string, noNum: string) => {
             }
 
             return '('
+        }
+    }
+
+    // FACTORIALS
+    else if (noNum === '!') {
+        if (/\d/.test(lastChar)) {
+            return '!'
         }
     }
 
