@@ -57,7 +57,7 @@ function App() {
                         π
                     </button>
                     <button
-                        onClick={() => typeNoNum('^')}
+                        onClick={() => typeNoNum(' ^ ')}
                         className={style.noNum}
                     >
                         ^
