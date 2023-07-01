@@ -45,5 +45,16 @@ export const checkNoNum = (exp: string, noNum: string) => {
         }
     }
 
+    // DECIMAL
+    else if (noNum === '.') {
+        const lastNum = exp.match(/(\d+\.*\d*)$/)
+
+        if (lastNum) {
+            if (!lastNum[0].includes('.') && /\d/.test(lastChar)) {
+                return '.'
+            }
+        }
+    }
+
     return false
 }
