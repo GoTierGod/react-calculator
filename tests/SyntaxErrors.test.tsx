@@ -14,6 +14,7 @@ describe('Avoid syntax errors', () => {
     let minusButton: HTMLElement
     let multButton: HTMLElement
     let divButton: HTMLElement
+    let piButton: HTMLElement
     let pointButton: HTMLElement
     let zeroButton: HTMLElement
     let oneButton: HTMLElement
@@ -39,6 +40,7 @@ describe('Avoid syntax errors', () => {
         minusButton = screen.getByText('-')
         multButton = screen.getByText('x')
         divButton = screen.getByText('÷')
+        piButton = screen.getByText('π')
         pointButton = screen.getByText('.')
         zeroButton = screen.getByText('0')
         oneButton = screen.getByText('1')
@@ -75,5 +77,29 @@ describe('Avoid syntax errors', () => {
         consecClickEvents(events)
 
         expect(expScreen.innerHTML).toBe('4 + ')
+    })
+
+    test('Avoid PI being used as a decimal', () => {
+        const events = [sevenButton, pointButton, piButton]
+
+        consecClickEvents(events)
+
+        expect(expScreen.innerHTML).toBe('7.')
+    })
+
+    test('Avoid PI being used as an integer', () => {
+        const events = [piButton, threeButton, pointButton, threeButton]
+
+        consecClickEvents(events)
+
+        expect(expScreen.innerHTML).toBe('π')
+    })
+
+    test('Avoid consecutive PI', () => {
+        const events = [piButton, piButton]
+
+        consecClickEvents(events)
+
+        expect(expScreen.innerHTML).toBe('π')
     })
 })

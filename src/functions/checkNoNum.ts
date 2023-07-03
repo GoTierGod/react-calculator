@@ -1,4 +1,4 @@
-export const checkNoNum = (exp: string, noNum: string) => {
+export const checkNoNum = (exp: string, noNum: string): string | boolean => {
     const lastChar: string = exp[exp.length - 1]
 
     // BASIC OPERATIONS
@@ -38,7 +38,7 @@ export const checkNoNum = (exp: string, noNum: string) => {
     // PI
     else if (noNum === 'π') {
         if (
-            (!/\d/.test(lastChar) && lastChar !== '√') ||
+            (!/(\d|\.|π|!)/.test(lastChar) && lastChar !== '√') ||
             lastChar === undefined
         ) {
             return 'π'
