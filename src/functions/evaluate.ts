@@ -9,14 +9,22 @@ export const evaluate = (exp: string): string => {
 
     if (opening !== closing) return 'Non-closed parenthesis'
 
-    // Replace characters
+    // REPLACE FOR NECESSARY CHARACTERS
     let evaluable: string = exp
         .replace(/÷/g, '/')
         .replace(/x/g, '*')
         .replace(/\^/g, '**')
         .replace(/π/g, '3.1416')
 
-    // Resolve factorials
+    // PARENTHESIS MULTIPLICATIONS
+    const parMul = evaluable.match(/(\)\(|\d\(|\)\d)/)
+    if (parMul) {
+        for (const pm of parMul) {
+            evaluable = evaluable.replace(pm, pm[0] + '*' + pm[1])
+        }
+    }
+
+    // RESOLVE FACTORIALS
     const factorials = evaluable.match(/\d+!/g)
     if (factorials) {
         const resFactorial = (num: number): number => {
@@ -34,7 +42,7 @@ export const evaluate = (exp: string): string => {
         }
     }
 
-    // Resolve square roots
+    // RESOLVE SQUARE ROOTS
     const sqrt = evaluable.match(/(√\((.*?)\)|√\d+)/g)
     if (sqrt) {
         for (const sr of sqrt) {
@@ -45,7 +53,7 @@ export const evaluate = (exp: string): string => {
         }
     }
 
-    // Evaliate using a function constructor and return the result
+    // EVALUATE USING A FUNCTION CONSTRUCTOR AND RETURN THE RESULT
     let evaluation: number
     try {
         evaluation = new Function(`return ${evaluable}`)()
