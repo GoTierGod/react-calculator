@@ -15,26 +15,26 @@
 .calculator {
     display: grid;
     grid-template-rows: 1fr 2fr;
-    gap: 1rem;
+    gap: 0.5rem;
 
-    padding: 1rem;
+    padding: 0.5rem;
 
     background: var(--black);
 
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 .screen {
     padding: 0.5rem 0.75rem;
 
     height: 100%;
-    width: 260px;
+    width: 275px;
 
     background: var(--dark);
 
     line-break: anywhere;
 
-    border-radius: 2px;
+    border-radius: 3px;
 
     overflow-y: scroll;
 }
@@ -48,7 +48,7 @@
 .screen::-webkit-scrollbar-thumb {
     background: var(--black);
 
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 .buttons {
@@ -64,7 +64,7 @@
     font-family: inherit;
 
     border: none;
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 .buttons button:hover {
