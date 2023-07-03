@@ -17,7 +17,7 @@ export const evaluate = (exp: string): string => {
         .replace(/π/g, '3.1416')
 
     // PARENTHESIS MULTIPLICATIONS
-    const parMul = evaluable.match(/(\)\(|\d\(|\)\d)/)
+    const parMul = evaluable.match(/(\)\(|\d\(|\)\d)/g)
     if (parMul) {
         for (const pm of parMul) {
             evaluable = evaluable.replace(pm, pm[0] + '*' + pm[1])
@@ -25,8 +25,8 @@ export const evaluate = (exp: string): string => {
     }
 
     // RESOLVE FACTORIALS
-    const factorials = evaluable.match(/\d+!/g)
-    if (factorials) {
+    const factorialsOps = evaluable.match(/\d+!/g)
+    if (factorialsOps) {
         const resFactorial = (num: number): number => {
             if (num === 0) {
                 return 1
@@ -35,7 +35,7 @@ export const evaluate = (exp: string): string => {
             }
         }
 
-        for (const fac of factorials) {
+        for (const fac of factorialsOps) {
             const num = Number(fac.replace('!', ''))
 
             evaluable = evaluable.replace(fac, resFactorial(num).toString())
@@ -43,13 +43,24 @@ export const evaluate = (exp: string): string => {
     }
 
     // RESOLVE SQUARE ROOTS
-    const sqrt = evaluable.match(/(√\((.*?)\)|√\d+)/g)
-    if (sqrt) {
-        for (const sr of sqrt) {
+    const sqrtOps = evaluable.match(/(√\((.*?)\)|√\d+)/g)
+    if (sqrtOps) {
+        for (const sr of sqrtOps) {
             const exp: string = sr.replace('√', '')
             const resolvedExp: number = new Function(`return ${exp}`)()
 
             evaluable = evaluable.replace(sr, String(Math.sqrt(resolvedExp)))
+        }
+    }
+
+    // RESOLVE PERCENTAGE
+    const perOps = evaluable.match(/(\(.*\)|\d+\.*\d*)\s%\s(\(.*\)|\d+\.*\d*)/g)
+    if (perOps) {
+        for (const per of perOps) {
+            const left = per.split('%')[0].trim()
+            const right = per.split('%')[1].trim()
+
+            evaluable = evaluable.replace(per, `(${left}/100) * (${right})`)
         }
     }
 
