@@ -62,7 +62,7 @@ describe('Avoid syntax errors', () => {
         expect(expScreen.innerHTML).toBe('Non-closed parenthesis')
     })
 
-    test('No empty parenthesis', () => {
+    test('Avoid empty parenthesis', () => {
         const events = [parButton, parButton]
 
         consecClickEvents(events)

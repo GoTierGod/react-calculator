@@ -61,4 +61,19 @@ describe('Avoid syntax errors', () => {
 
         expect(expScreen.innerHTML).toBe('Syntax error')
     })
+
+    test('Avoid consecutive operators', () => {
+        const events = [
+            fourButton,
+            plusButton,
+            minusButton,
+            multButton,
+            divButton,
+            powButton,
+        ]
+
+        consecClickEvents(events)
+
+        expect(expScreen.innerHTML).toBe('4 + ')
+    })
 })
