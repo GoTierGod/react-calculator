@@ -15,6 +15,7 @@ export const evaluate = (exp: string): string => {
         .replace(/x/g, '*')
         .replace(/\^/g, '**')
         .replace(/π/g, Math.PI.toString())
+        .replace(/e/g, Math.E.toString())
 
     // PARENTHESIS MULTIPLICATIONS
     const parMul = evaluable.match(/(\)\(|\d\(|\)\d)/g)

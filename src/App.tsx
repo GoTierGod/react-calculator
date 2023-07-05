@@ -51,7 +51,12 @@ function App() {
                     <button className={style.ans}>ans</button>
                     <button className={style.noNum}>log</button>
                     <button className={style.noNum}>ln</button>
-                    <button className={style.noNum}>e</button>
+                    <button
+                        onClick={() => typeNoNum('e')}
+                        className={style.noNum}
+                    >
+                        e
+                    </button>
                     <button onClick={() => clean()} className={style.clean}>
                         AC
                     </button>

@@ -3,7 +3,7 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
 
     // BASIC OPERATIONS
     if ([' x ', ' - ', ' + ', ' ÷ ', ' ^ ', ' % '].includes(noNum)) {
-        if (/(\d|\)|!|π)/.test(lastChar)) {
+        if (/(\d|\)|!|π|e)/.test(lastChar)) {
             return noNum
         }
     }
@@ -36,12 +36,9 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
     }
 
     // PI
-    else if (noNum === 'π') {
-        if (
-            (!/(\d|\.|π|!)/.test(lastChar) && lastChar !== '√') ||
-            lastChar === undefined
-        ) {
-            return 'π'
+    else if (noNum === 'π' || noNum === 'e') {
+        if (!/(\d|\.|π|!|e)/.test(lastChar) || lastChar === undefined) {
+            return noNum
         }
     }
 

@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
 import App from '../src/App'
 
-describe('Operations using the Pi number', () => {
+describe('Operations using the Euler number', () => {
     let expScreen: HTMLElement
     let equalToButton: HTMLElement
     let parButton: HTMLElement
@@ -15,7 +15,8 @@ describe('Operations using the Pi number', () => {
     let multButton: HTMLElement
     let divButton: HTMLElement
     let piButton: HTMLElement
-    // let zeroButton: HTMLElement
+    let eulerButton: HTMLElement
+    let zeroButton: HTMLElement
     let oneButton: HTMLElement
     let twoButton: HTMLElement
     // let threeButton: HTMLElement
@@ -40,7 +41,8 @@ describe('Operations using the Pi number', () => {
         multButton = screen.getByText('X')
         divButton = screen.getByText('÷')
         piButton = screen.getByText('π')
-        // zeroButton = screen.getByText('0')
+        eulerButton = screen.getByText('e')
+        zeroButton = screen.getByText('0')
         oneButton = screen.getByText('1')
         twoButton = screen.getByText('2')
         // threeButton = screen.getByText('3')
@@ -54,19 +56,25 @@ describe('Operations using the Pi number', () => {
 
     afterEach(() => cleanup())
 
-    test('π + 1', () => {
-        const clickEvents = [piButton, plusButton, oneButton, equalToButton]
+    test('e + 10', () => {
+        const clickEvents = [
+            eulerButton,
+            plusButton,
+            oneButton,
+            zeroButton,
+            equalToButton,
+        ]
 
         consecClickEvents(clickEvents)
 
-        const result = Math.PI + 1
+        const result = Math.E + 10
 
         expect(expScreen.innerHTML).toBe(result.toString())
     })
 
-    test('π x (2 + 1)', () => {
+    test('e x (2 + 1)', () => {
         const clickEvents = [
-            piButton,
+            eulerButton,
             multButton,
             parButton,
             twoButton,
@@ -78,15 +86,15 @@ describe('Operations using the Pi number', () => {
 
         consecClickEvents(clickEvents)
 
-        const result = Math.PI * (2 + 1)
+        const result = Math.E * (2 + 1)
 
         expect(expScreen.innerHTML).toBe(result.toString())
     })
 
-    test('(π + π) ÷ 2', () => {
+    test('(e + π) ÷ 2', () => {
         const clickEvents = [
             parButton,
-            piButton,
+            eulerButton,
             plusButton,
             piButton,
             parButton,
@@ -97,7 +105,7 @@ describe('Operations using the Pi number', () => {
 
         consecClickEvents(clickEvents)
 
-        const result = (Math.PI + Math.PI) / 2
+        const result = (Math.E + Math.PI) / 2
 
         expect(expScreen.innerHTML).toBe(result.toString())
     })
