@@ -48,6 +48,14 @@ function App() {
                     {expression}
                 </p>
                 <div className={style.buttons}>
+                    <button className={style.ans}>ans</button>
+                    <button className={style.noNum}>log</button>
+                    <button className={style.noNum}>ln</button>
+                    <button className={style.noNum}>e</button>
+                    <button onClick={() => clean()} className={style.clean}>
+                        AC
+                    </button>
+                    <button className={style.noNum}>x²</button>
                     <button
                         onClick={() => typeNoNum('√')}
                         className={style.noNum}
@@ -66,12 +74,10 @@ function App() {
                     >
                         x^
                     </button>
-                    <button
-                        onClick={() => typeNoNum('!')}
-                        className={style.noNum}
-                    >
-                        n!
+                    <button onClick={() => del()} className={style.delete}>
+                        <FontAwesomeIcon icon={faDeleteLeft} />
                     </button>
+                    <button className={style.noNum}>+/-</button>
                     <button
                         onClick={() => typeNoNum('par')}
                         className={style.noNum}
@@ -90,15 +96,18 @@ function App() {
                     >
                         ÷
                     </button>
-                    <button onClick={() => clean()} className={style.clean}>
-                        AC
-                    </button>
+                    <button className={style.noNum}>|x|</button>
+                    <button className={style.noNum}>exp</button>
                     <button onClick={() => typeNum('7')}>7</button>
                     <button onClick={() => typeNum('8')}>8</button>
                     <button onClick={() => typeNum('9')}>9</button>
-                    <button onClick={() => del()} className={style.delete}>
-                        <FontAwesomeIcon icon={faDeleteLeft} />
+                    <button
+                        onClick={() => typeNoNum('!')}
+                        className={style.noNum}
+                    >
+                        n!
                     </button>
+                    <button className={style.noNum}>mod</button>
                     <button onClick={() => typeNum('4')}>4</button>
                     <button onClick={() => typeNum('5')}>5</button>
                     <button onClick={() => typeNum('6')}>6</button>
@@ -108,6 +117,7 @@ function App() {
                     >
                         X
                     </button>
+                    <button className={style.noNum}>10^</button>
                     <button onClick={() => typeNum('1')}>1</button>
                     <button onClick={() => typeNum('2')}>2</button>
                     <button onClick={() => typeNum('3')}>3</button>
@@ -117,13 +127,14 @@ function App() {
                     >
                         +
                     </button>
-                    <button onClick={() => typeNum('0')}>0</button>
+                    <button className={style.noNum}>¹/x</button>
                     <button
                         onClick={() => typeNoNum('.')}
                         className={style.noNum}
                     >
                         .
                     </button>
+                    <button onClick={() => typeNum('0')}>0</button>
                     <button
                         onClick={() => typeNoNum(' - ')}
                         className={style.noNum}
