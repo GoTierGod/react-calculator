@@ -6,7 +6,7 @@
     min-height: 100vh;
     min-width: 100vw;
 
-    background: var(--dark);
+    background: #1a1a1a;
     color: var(--white);
 
     overflow-x: hidden;
@@ -28,7 +28,7 @@
     padding: 0.5rem 0.75rem;
 
     height: 100%;
-    width: 275px;
+    width: 100%;
 
     background: var(--dark);
 
@@ -43,6 +43,8 @@
     width: 0.5rem;
 
     background: var(--dark);
+
+    border-radius: 3px;
 }
 
 .screen::-webkit-scrollbar-thumb {

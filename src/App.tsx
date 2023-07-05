@@ -1,5 +1,9 @@
-import { useState } from 'react'
 import style from './App.module.css'
+
+import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
+
 import { checkNum } from './functions/checkNum'
 import { checkNoNum } from './functions/checkNoNum'
 import { evaluate } from './functions/evaluate'
@@ -48,7 +52,7 @@ function App() {
                         onClick={() => typeNoNum('√')}
                         className={style.noNum}
                     >
-                        √
+                        √x
                     </button>
                     <button
                         onClick={() => typeNoNum('π')}
@@ -60,13 +64,13 @@ function App() {
                         onClick={() => typeNoNum(' ^ ')}
                         className={style.noNum}
                     >
-                        ^
+                        x^
                     </button>
                     <button
                         onClick={() => typeNoNum('!')}
                         className={style.noNum}
                     >
-                        !
+                        n!
                     </button>
                     <button
                         onClick={() => typeNoNum('par')}
@@ -93,7 +97,7 @@ function App() {
                     <button onClick={() => typeNum('8')}>8</button>
                     <button onClick={() => typeNum('9')}>9</button>
                     <button onClick={() => del()} className={style.delete}>
-                        D
+                        <FontAwesomeIcon icon={faDeleteLeft} />
                     </button>
                     <button onClick={() => typeNum('4')}>4</button>
                     <button onClick={() => typeNum('5')}>5</button>
@@ -102,7 +106,7 @@ function App() {
                         onClick={() => typeNoNum(' x ')}
                         className={style.noNum}
                     >
-                        x
+                        X
                     </button>
                     <button onClick={() => typeNum('1')}>1</button>
                     <button onClick={() => typeNum('2')}>2</button>

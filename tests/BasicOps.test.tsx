@@ -20,7 +20,7 @@ describe('Basic operations tests', () => {
         equalToButton = screen.getByText('=')
         plusButton = screen.getByText('+')
         minusButton = screen.getByText('-')
-        multButton = screen.getByText('x')
+        multButton = screen.getByText('X')
         divButton = screen.getByText('÷')
         threeButton = screen.getByText('3')
         fourButton = screen.getByText('4')
