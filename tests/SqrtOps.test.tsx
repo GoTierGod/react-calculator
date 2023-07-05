@@ -53,15 +53,17 @@ describe('Square root operations', () => {
     afterEach(() => cleanup())
 
     test('√9', () => {
-        const events = [sqrtButton, nineButton, equalToButton]
+        const clickEvents = [sqrtButton, nineButton, equalToButton]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('3')
+        const result = Math.sqrt(9)
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('√(10 + 6)', () => {
-        const events = [
+        const clickEvents = [
             sqrtButton,
             parButton,
             oneButton,
@@ -72,13 +74,15 @@ describe('Square root operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('4')
+        const result = Math.sqrt(10 + 6)
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('√(3 x 3) + √25 ÷  √4', () => {
-        const events = [
+        const clickEvents = [
             sqrtButton,
             parButton,
             threeButton,
@@ -95,8 +99,10 @@ describe('Square root operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('5.5')
+        const result = Math.sqrt(3 * 3) + Math.sqrt(25) / Math.sqrt(4)
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 })

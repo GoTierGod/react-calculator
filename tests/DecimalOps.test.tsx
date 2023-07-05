@@ -55,7 +55,7 @@ describe('Operations using decimals', () => {
     afterEach(() => cleanup())
 
     test('0.5 x 1.5 - (5.0 ^ 2)', () => {
-        const events = [
+        const clickEvents = [
             zeroButton,
             pointButton,
             fiveButton,
@@ -74,13 +74,15 @@ describe('Operations using decimals', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('-24.25')
+        const result = 0.5 * 1.5 - 5 ** 2
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('5! x 0.5', () => {
-        const events = [
+        const clickEvents = [
             fiveButton,
             facButton,
             multButton,
@@ -90,13 +92,15 @@ describe('Operations using decimals', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('60')
+        const result = 120 * 0.5
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(1.0 ÷ 3) + (1 ÷ 3.0)', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             oneButton,
             pointButton,
@@ -115,8 +119,10 @@ describe('Operations using decimals', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('0.667')
+        const result = 1 / 3 + 1 / 3
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 })

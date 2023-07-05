@@ -29,34 +29,47 @@ describe('Basic operations tests', () => {
     afterEach(() => cleanup())
 
     test('Addition: 3 + 4', () => {
-        const events = [threeButton, plusButton, fourButton, equalToButton]
+        const clickEvents = [threeButton, plusButton, fourButton, equalToButton]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('7')
+        const result = 3 + 4
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('Subtraction: 4 - 3', () => {
-        const events = [fourButton, minusButton, threeButton, equalToButton]
+        const clickEvents = [
+            fourButton,
+            minusButton,
+            threeButton,
+            equalToButton,
+        ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('1')
+        const result = 4 - 3
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('Multiplication: 4 x 3', () => {
-        const events = [fourButton, multButton, threeButton, equalToButton]
+        const clickEvents = [fourButton, multButton, threeButton, equalToButton]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('12')
+        const result = 4 * 3
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('Division: 3 ÷ 4', () => {
-        const events = [threeButton, divButton, fourButton, equalToButton]
+        const clickEvents = [threeButton, divButton, fourButton, equalToButton]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('0.75')
+        const result = 3 / 4
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 })

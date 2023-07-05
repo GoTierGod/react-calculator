@@ -14,7 +14,7 @@ export const evaluate = (exp: string): string => {
         .replace(/÷/g, '/')
         .replace(/x/g, '*')
         .replace(/\^/g, '**')
-        .replace(/π/g, '3.1416')
+        .replace(/π/g, Math.PI.toString())
 
     // PARENTHESIS MULTIPLICATIONS
     const parMul = evaluable.match(/(\)\(|\d\(|\)\d)/g)
@@ -72,5 +72,5 @@ export const evaluate = (exp: string): string => {
         return 'Syntax error'
     }
 
-    return String(Number(evaluation.toFixed(3)))
+    return String(Number(evaluation))
 }

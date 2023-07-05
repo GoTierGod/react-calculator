@@ -29,23 +29,27 @@ describe('Exponentiation operations', () => {
     afterEach(() => cleanup())
 
     test('4 ^ 3', () => {
-        const events = [fourButton, powButton, threeButton, equalToButton]
+        const clickEvents = [fourButton, powButton, threeButton, equalToButton]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('64')
+        const result = 4 ** 3
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('3 ^ 4', () => {
-        const events = [threeButton, powButton, fourButton, equalToButton]
+        const clickEvents = [threeButton, powButton, fourButton, equalToButton]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('81')
+        const result = 3 ** 4
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('3 ^ (4 + 3)', () => {
-        const events = [
+        const clickEvents = [
             threeButton,
             powButton,
             parButton,
@@ -56,13 +60,15 @@ describe('Exponentiation operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('2187')
+        const result = 3 ** (4 + 3)
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('3 ^ (3 x 4)', () => {
-        const events = [
+        const clickEvents = [
             threeButton,
             powButton,
             parButton,
@@ -73,13 +79,15 @@ describe('Exponentiation operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('531441')
+        const result = 3 ** (3 * 4)
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(3 x 4) ^ 3', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             threeButton,
             multButton,
@@ -90,13 +98,15 @@ describe('Exponentiation operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('1728')
+        const result = (3 * 4) ** 3
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(4 + 3) ^ 3', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             fourButton,
             plusButton,
@@ -107,8 +117,10 @@ describe('Exponentiation operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('343')
+        const result = (4 + 3) ** 3
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 })

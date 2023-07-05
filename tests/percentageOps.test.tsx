@@ -57,7 +57,7 @@ describe('', () => {
     afterEach(() => cleanup())
 
     test('50 % 10', () => {
-        const events = [
+        const clickEvents = [
             fiveButton,
             zeroButton,
             percButton,
@@ -66,13 +66,15 @@ describe('', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('5')
+        const result = (50 / 100) * 10
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(25 + 25) % 5', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             twoButton,
             fiveButton,
@@ -85,13 +87,15 @@ describe('', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('2.5')
+        const result = ((25 + 25) / 100) * 5
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(25 x 2) % (5 x 3)', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             twoButton,
             fiveButton,
@@ -107,8 +111,10 @@ describe('', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('7.5')
+        const result = ((25 * 2) / 100) * (5 * 3)
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 })

@@ -31,7 +31,7 @@ describe('Operations using parenthesis tests', () => {
     afterEach(() => cleanup())
 
     test('(34 - 3) x 4', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             threeButton,
             fourButton,
@@ -43,13 +43,15 @@ describe('Operations using parenthesis tests', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('124')
+        const result = (34 - 3) * 4
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('4 x (4 + 4)', () => {
-        const events = [
+        const clickEvents = [
             fourButton,
             multButton,
             parButton,
@@ -60,13 +62,15 @@ describe('Operations using parenthesis tests', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('32')
+        const result = 4 * (4 + 4)
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(3 + 3) ÷ 4', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             threeButton,
             plusButton,
@@ -77,13 +81,15 @@ describe('Operations using parenthesis tests', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('1.5')
+        const result = (3 + 3) / 4
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('4(3 + 4)', () => {
-        const events = [
+        const clickEvents = [
             fourButton,
             parButton,
             threeButton,
@@ -93,13 +99,15 @@ describe('Operations using parenthesis tests', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('28')
+        const result = 4 * (3 + 4)
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(3)3 + 4', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             threeButton,
             parButton,
@@ -109,13 +117,15 @@ describe('Operations using parenthesis tests', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('13')
+        const result = 3 * 3 + 4
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('3 + 3(4)', () => {
-        const events = [
+        const clickEvents = [
             threeButton,
             plusButton,
             threeButton,
@@ -125,8 +135,10 @@ describe('Operations using parenthesis tests', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('15')
+        const result = 3 + 3 * 4
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 })

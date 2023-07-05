@@ -55,15 +55,17 @@ describe('Operations using the pi number', () => {
     afterEach(() => cleanup())
 
     test('π + 1', () => {
-        const events = [piButton, plusButton, oneButton, equalToButton]
+        const clickEvents = [piButton, plusButton, oneButton, equalToButton]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('4.142')
+        const result = Math.PI + 1
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('π x (2 + 1)', () => {
-        const events = [
+        const clickEvents = [
             piButton,
             multButton,
             parButton,
@@ -74,13 +76,15 @@ describe('Operations using the pi number', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('9.425')
+        const result = Math.PI * (2 + 1)
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(π + π) ÷ 2', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             piButton,
             plusButton,
@@ -91,8 +95,10 @@ describe('Operations using the pi number', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('3.142')
+        const result = (Math.PI + Math.PI) / 2
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 })

@@ -55,17 +55,17 @@ describe('Avoid syntax errors', () => {
     afterEach(() => cleanup())
 
     test('Return a "Non-closed parenthesis" error', () => {
-        const events = [parButton, fiveButton, equalToButton]
+        const clickEvents = [parButton, fiveButton, equalToButton]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
         expect(expScreen.innerHTML).toBe('Non-closed parenthesis')
     })
 
     test('Avoid empty parenthesis', () => {
-        const events = [parButton, parButton]
+        const clickEvents = [parButton, parButton]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
         expect(expScreen.innerHTML).not.toBe('()')
     })

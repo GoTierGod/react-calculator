@@ -39,7 +39,7 @@ describe('Factorial operations', () => {
     afterEach(() => cleanup())
 
     test('1! + 2!', () => {
-        const events = [
+        const clickEvents = [
             oneButton,
             facButton,
             plusButton,
@@ -48,13 +48,15 @@ describe('Factorial operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('3')
+        const result = 1 + 2
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('2! ^ 2!', () => {
-        const events = [
+        const clickEvents = [
             twoButton,
             facButton,
             powButton,
@@ -63,13 +65,15 @@ describe('Factorial operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('4')
+        const result = 2 ** 2
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('3! - 4!', () => {
-        const events = [
+        const clickEvents = [
             threeButton,
             facButton,
             minusButton,
@@ -78,13 +82,15 @@ describe('Factorial operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('-18')
+        const result = 6 - 24
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(2! + 3!) x 3!', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             twoButton,
             facButton,
@@ -98,13 +104,15 @@ describe('Factorial operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('48')
+        const result = (2 + 6) * 6
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 
     test('(4! ÷ 3!)', () => {
-        const events = [
+        const clickEvents = [
             parButton,
             fourButton,
             facButton,
@@ -115,8 +123,10 @@ describe('Factorial operations', () => {
             equalToButton,
         ]
 
-        consecClickEvents(events)
+        consecClickEvents(clickEvents)
 
-        expect(expScreen.innerHTML).toBe('4')
+        const result = 24 / 6
+
+        expect(expScreen.innerHTML).toBe(result.toString())
     })
 })
