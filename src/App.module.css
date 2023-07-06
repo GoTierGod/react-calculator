@@ -25,7 +25,8 @@
 }
 
 .screen {
-    padding: 0.5rem 0.75rem;
+    display: flex;
+    flex-direction: column;
 
     height: 100%;
     width: 100%;
@@ -39,7 +40,30 @@
     overflow-y: scroll;
 }
 
-.screen::-webkit-scrollbar {
+.screen span {
+    display: block;
+
+    padding: 0.5rem;
+
+    width: 287.5px;
+    height: 2.75rem;
+
+    border-bottom: 0.25rem solid var(--black);
+
+    overflow-y: scroll;
+}
+
+.screen p {
+    padding: 0.5rem;
+
+    width: 287.5px;
+    height: auto;
+}
+
+.screen::-webkit-scrollbar,
+.screen span::-webkit-scrollbar {
+    display: none;
+
     width: 0.5rem;
 
     background: var(--dark);
@@ -47,6 +71,7 @@
     border-radius: 3px;
 }
 
+.screen::-webkit-scrollbar-thumb,
 .screen::-webkit-scrollbar-thumb {
     background: var(--black);
 

@@ -1,6 +1,8 @@
 import { describe, expect, test, beforeEach, afterEach } from 'vitest'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import App from '../src/App'
+import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 
 describe('GUI tests', () => {
     beforeEach(() => {
@@ -9,11 +11,18 @@ describe('GUI tests', () => {
 
     afterEach(() => cleanup())
 
-    test('Must have a screen (paragraph) showing the current expression', () => {
+    test('Must have a paragraph to show the current expression', () => {
         const expScreen = screen.getByTestId('expression')
 
         expect(expScreen).toBeDefined()
         expect(expScreen.tagName).toBe('P')
+    })
+
+    test('Must have a span to show the last answer', () => {
+        const ansScreen = screen.getByTestId('ans')
+
+        expect(ansScreen).toBeDefined()
+        expect(ansScreen.tagName).toBe('SPAN')
     })
 
     test('Must have a button with an = sign', () => {
@@ -51,5 +60,32 @@ describe('Typing tests', () => {
             const regex = new RegExp(`${i}`)
             expect(expScreen.innerHTML).toMatch(regex)
         }
+    })
+})
+
+describe('Screen tests', () => {
+    beforeEach(() => {
+        render(<App />)
+    })
+
+    afterEach(() => cleanup())
+
+    test('Correctly showing expression and last answer', () => {
+        const expScreen = screen.getByTestId('expression')
+        const ansScreen = screen.getByTestId('ans')
+
+        const equalToButton = screen.getByText('=')
+        const multButton = screen.getByText('X')
+        const threeButton = screen.getByText('3')
+        const fourButton = screen.getByText('4')
+
+        const clickEvents = [threeButton, multButton, fourButton, equalToButton]
+
+        consecClickEvents(clickEvents)
+
+        const result = 3 * 4
+
+        expect(ansScreen.innerHTML).toBe(correctNumFormat(result))
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })
