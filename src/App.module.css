@@ -33,6 +33,7 @@
 
     background: var(--dark);
 
+    text-align: right;
     line-break: anywhere;
 
     border-radius: 3px;
@@ -43,18 +44,20 @@
 .screen span {
     display: block;
 
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    padding-bottom: 0;
 
     width: 287.5px;
-    height: 2.75rem;
+    height: 2rem;
 
-    border-bottom: 0.25rem solid var(--black);
+    color: var(--gray);
 
     overflow-y: scroll;
 }
 
 .screen p {
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    padding-top: 0.25rem;
 
     width: 287.5px;
     height: auto;
@@ -108,7 +111,7 @@
 }
 
 .noNum {
-    background: var(--gray);
+    background: var(--dark-2);
 }
 
 .equalTo {
