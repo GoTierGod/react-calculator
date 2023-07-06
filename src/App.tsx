@@ -127,7 +127,12 @@ function App() {
                     >
                         X
                     </button>
-                    <button className={style.noNum}>10^</button>
+                    <button
+                        onClick={() => typeNoNum('10 ^ ')}
+                        className={style.noNum}
+                    >
+                        10^
+                    </button>
                     <button onClick={() => typeNum('1')}>1</button>
                     <button onClick={() => typeNum('2')}>2</button>
                     <button onClick={() => typeNum('3')}>3</button>
