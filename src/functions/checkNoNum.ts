@@ -1,8 +1,8 @@
 export const checkNoNum = (exp: string, noNum: string): string | boolean => {
     const lastChar: string = exp[exp.length - 1]
 
-    // BASIC OPERATIONS
-    if ([' x ', ' - ', ' + ', ' ÷ ', ' ^ ', ' % '].includes(noNum)) {
+    // EASY TO ADD OPERATIONS
+    if ([' x ', ' - ', ' + ', ' ÷ ', ' ^ ', ' % ', ' ^ 2'].includes(noNum)) {
         if (/(\d|\)|!|π|e)/.test(lastChar)) {
             return noNum
         }
@@ -26,7 +26,7 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
     // FACTORIALS
     else if (noNum === '!') {
         if (/\d/.test(lastChar)) {
-            return '!'
+            return noNum
         }
     }
 
@@ -48,7 +48,7 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
 
         if (lastNum) {
             if (!lastNum[0].includes('.') && /\d/.test(lastChar)) {
-                return '.'
+                return noNum
             }
         }
     }

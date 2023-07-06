@@ -60,7 +60,12 @@ function App() {
                     <button onClick={() => clean()} className={style.clean}>
                         AC
                     </button>
-                    <button className={style.noNum}>x²</button>
+                    <button
+                        onClick={() => typeNoNum(' ^ 2')}
+                        className={style.noNum}
+                    >
+                        x²
+                    </button>
                     <button
                         onClick={() => typeNoNum('√')}
                         className={style.noNum}
