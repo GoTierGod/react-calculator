@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Operations using parenthesis tests', () => {
@@ -47,7 +48,7 @@ describe('Operations using parenthesis tests', () => {
 
         const result = (34 - 3) * 4
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('4 x (4 + 4)', () => {
@@ -66,7 +67,7 @@ describe('Operations using parenthesis tests', () => {
 
         const result = 4 * (4 + 4)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(3 + 3) ÷ 4', () => {
@@ -85,7 +86,7 @@ describe('Operations using parenthesis tests', () => {
 
         const result = (3 + 3) / 4
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('4(3 + 4)', () => {
@@ -103,7 +104,7 @@ describe('Operations using parenthesis tests', () => {
 
         const result = 4 * (3 + 4)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(3)3 + 4', () => {
@@ -121,7 +122,7 @@ describe('Operations using parenthesis tests', () => {
 
         const result = 3 * 3 + 4
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('3 + 3(4)', () => {
@@ -139,6 +140,6 @@ describe('Operations using parenthesis tests', () => {
 
         const result = 3 + 3 * 4
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Fast one divided by', () => {
@@ -69,7 +70,7 @@ describe('Fast one divided by', () => {
 
         const result = 1 / 2
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('2 + (1 ÷ 10)', () => {
@@ -88,7 +89,7 @@ describe('Fast one divided by', () => {
 
         const result = 2 + 1 / 10
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('20 x 10 x (1 ÷ 12)', () => {
@@ -111,6 +112,6 @@ describe('Fast one divided by', () => {
 
         const result = 20 * 10 * (1 / 12)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

@@ -73,5 +73,5 @@ export const evaluate = (exp: string): string => {
         return 'Syntax error'
     }
 
-    return String(Number(evaluation))
+    return Number(evaluation.toFixed(14)).toString()
 }

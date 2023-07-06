@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Square root operations', () => {
@@ -59,7 +60,7 @@ describe('Square root operations', () => {
 
         const result = Math.sqrt(9)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('√(10 + 6)', () => {
@@ -78,7 +79,7 @@ describe('Square root operations', () => {
 
         const result = Math.sqrt(10 + 6)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('√(3 x 3) + √25 ÷  √4', () => {
@@ -103,6 +104,6 @@ describe('Square root operations', () => {
 
         const result = Math.sqrt(3 * 3) + Math.sqrt(25) / Math.sqrt(4)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

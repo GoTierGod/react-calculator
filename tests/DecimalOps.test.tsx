@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Operations using decimals', () => {
@@ -78,7 +79,7 @@ describe('Operations using decimals', () => {
 
         const result = 0.5 * 1.5 - 5 ** 2
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('5! x 0.5', () => {
@@ -96,7 +97,7 @@ describe('Operations using decimals', () => {
 
         const result = 120 * 0.5
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(1.0 ÷ 3) + (1 ÷ 3.0)', () => {
@@ -123,6 +124,6 @@ describe('Operations using decimals', () => {
 
         const result = 1 / 3 + 1 / 3
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

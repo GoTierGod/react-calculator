@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Operations using the Euler number', () => {
@@ -69,7 +70,7 @@ describe('Operations using the Euler number', () => {
 
         const result = Math.E + 10
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('e x (2 + 1)', () => {
@@ -88,7 +89,7 @@ describe('Operations using the Euler number', () => {
 
         const result = Math.E * (2 + 1)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(e + π) ÷ 2', () => {
@@ -107,6 +108,6 @@ describe('Operations using the Euler number', () => {
 
         const result = (Math.E + Math.PI) / 2
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

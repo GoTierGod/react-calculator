@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('', () => {
@@ -70,7 +71,7 @@ describe('', () => {
 
         const result = (50 / 100) * 10
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(25 + 25) % 5', () => {
@@ -91,7 +92,7 @@ describe('', () => {
 
         const result = ((25 + 25) / 100) * 5
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(25 x 2) % (5 x 3)', () => {
@@ -115,6 +116,6 @@ describe('', () => {
 
         const result = ((25 * 2) / 100) * (5 * 3)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

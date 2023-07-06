@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Exponentiation operations', () => {
@@ -35,7 +36,7 @@ describe('Exponentiation operations', () => {
 
         const result = 4 ** 3
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('3 ^ 4', () => {
@@ -45,7 +46,7 @@ describe('Exponentiation operations', () => {
 
         const result = 3 ** 4
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('3 ^ (4 + 3)', () => {
@@ -64,7 +65,7 @@ describe('Exponentiation operations', () => {
 
         const result = 3 ** (4 + 3)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('3 ^ (3 x 4)', () => {
@@ -83,7 +84,7 @@ describe('Exponentiation operations', () => {
 
         const result = 3 ** (3 * 4)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(3 x 4) ^ 3', () => {
@@ -102,7 +103,7 @@ describe('Exponentiation operations', () => {
 
         const result = (3 * 4) ** 3
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(4 + 3) ^ 3', () => {
@@ -121,6 +122,6 @@ describe('Exponentiation operations', () => {
 
         const result = (4 + 3) ** 3
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

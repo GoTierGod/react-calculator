@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Factorial operations', () => {
@@ -52,7 +53,7 @@ describe('Factorial operations', () => {
 
         const result = 1 + 2
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('2! ^ 2!', () => {
@@ -69,7 +70,7 @@ describe('Factorial operations', () => {
 
         const result = 2 ** 2
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('3! - 4!', () => {
@@ -86,7 +87,7 @@ describe('Factorial operations', () => {
 
         const result = 6 - 24
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(2! + 3!) x 3!', () => {
@@ -108,7 +109,7 @@ describe('Factorial operations', () => {
 
         const result = (2 + 6) * 6
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(4! ÷ 3!)', () => {
@@ -127,6 +128,6 @@ describe('Factorial operations', () => {
 
         const result = 24 / 6
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

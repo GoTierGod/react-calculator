@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Basic operations tests', () => {
@@ -35,7 +36,7 @@ describe('Basic operations tests', () => {
 
         const result = 3 + 4
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('Subtraction: 4 - 3', () => {
@@ -50,7 +51,7 @@ describe('Basic operations tests', () => {
 
         const result = 4 - 3
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('Multiplication: 4 x 3', () => {
@@ -60,7 +61,7 @@ describe('Basic operations tests', () => {
 
         const result = 4 * 3
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('Division: 3 ÷ 4', () => {
@@ -70,6 +71,6 @@ describe('Basic operations tests', () => {
 
         const result = 3 / 4
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

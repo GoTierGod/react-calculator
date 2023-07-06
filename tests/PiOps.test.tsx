@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Operations using the Pi number', () => {
@@ -61,7 +62,7 @@ describe('Operations using the Pi number', () => {
 
         const result = Math.PI + 1
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('π x (2 + 1)', () => {
@@ -80,7 +81,7 @@ describe('Operations using the Pi number', () => {
 
         const result = Math.PI * (2 + 1)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('(π + π) ÷ 2', () => {
@@ -99,6 +100,6 @@ describe('Operations using the Pi number', () => {
 
         const result = (Math.PI + Math.PI) / 2
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })

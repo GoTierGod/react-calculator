@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { consecClickEvents } from './helpers/consecClickEvents'
+import { correctNumFormat } from './helpers/correctNumFormat'
 import App from '../src/App'
 
 describe('Fast exponentiation with base 10', () => {
@@ -67,7 +68,7 @@ describe('Fast exponentiation with base 10', () => {
 
         const result = 10 ** 2
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('√(10 ^ 2)', () => {
@@ -84,7 +85,7 @@ describe('Fast exponentiation with base 10', () => {
 
         const result = Math.sqrt(10 ** 2)
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 
     test('π + 10 ^ 1', () => {
@@ -100,6 +101,6 @@ describe('Fast exponentiation with base 10', () => {
 
         const result = Math.PI + 10 ** 1
 
-        expect(expScreen.innerHTML).toBe(result.toString())
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })
