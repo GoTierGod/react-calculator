@@ -155,7 +155,11 @@ function App() {
                     >
                         x^
                     </button>
-                    <button onClick={() => del()} className={style.delete}>
+                    <button
+                        aria-label='Delete'
+                        onClick={() => del()}
+                        className={style.delete}
+                    >
                         <FontAwesomeIcon icon={faDeleteLeft} />
                     </button>
                     <button className={style.noNum}>+/-</button>
