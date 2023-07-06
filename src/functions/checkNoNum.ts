@@ -36,7 +36,12 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
     }
 
     // PI
-    else if (noNum === 'π' || noNum === 'e' || noNum === '10 ^ ') {
+    else if (
+        noNum === 'π' ||
+        noNum === 'e' ||
+        noNum === '10 ^ ' ||
+        noNum === '1 ÷ '
+    ) {
         if (!/(\d|\.|π|!|e)/.test(lastChar) || lastChar === undefined) {
             return noNum
         }

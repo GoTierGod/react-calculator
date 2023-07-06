@@ -142,7 +142,12 @@ function App() {
                     >
                         +
                     </button>
-                    <button className={style.noNum}>¹/x</button>
+                    <button
+                        onClick={() => typeNoNum('1 ÷ ')}
+                        className={style.noNum}
+                    >
+                        ¹/x
+                    </button>
                     <button
                         onClick={() => typeNoNum('.')}
                         className={style.noNum}
