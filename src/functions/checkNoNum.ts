@@ -3,7 +3,7 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
 
     // EASY TO ADD OPERATIONS
     if ([' x ', ' - ', ' + ', ' ÷ ', ' ^ ', ' % ', ' ^ 2'].includes(noNum)) {
-        if (/(\d|\)|!|π|e)/.test(lastChar)) {
+        if (/(\d|\)|!|π|e)/.test(lastChar) && lastChar !== undefined) {
             return noNum
         }
     }

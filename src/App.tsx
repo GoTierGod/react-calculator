@@ -1,6 +1,6 @@
 import style from './App.module.css'
 
-import { useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,34 +12,94 @@ function App() {
     const [expression, setExpression] = useState('')
 
     // CLEAN THE SCREEN
-    const clean = () => setExpression('')
+    const clean = useCallback(() => setExpression(''), [])
 
     // DELETE
-    const del = () => {
-        const lastChar: string = expression[expression.length - 1]
+    const del = useCallback(() => {
+        const lastChar = expression[expression.length - 1]
 
         if (!/(\d|\S)/.test(lastChar)) {
-            setExpression(expression.substring(0, expression.length - 3))
+            setExpression((prevExpression) =>
+                prevExpression.substring(0, expression.length - 3)
+            )
         } else {
-            setExpression(expression.substring(0, expression.length - 1))
+            setExpression((prevExpression) =>
+                prevExpression.substring(0, expression.length - 1)
+            )
         }
-    }
+    }, [expression])
 
     // TYPING
-    const typeNum = (num: string) => {
-        const check = checkNum(expression, num)
+    const typeNum = useCallback(
+        (num: string) => {
+            const check = checkNum(expression, num)
 
-        check && setExpression(expression + check)
-    }
+            check && setExpression((prevExpression) => prevExpression + check)
+        },
+        [expression]
+    )
 
-    const typeNoNum = (noNum: string) => {
-        const check = checkNoNum(expression, noNum)
+    const typeNoNum = useCallback(
+        (noNum: string) => {
+            const check = checkNoNum(expression, noNum)
 
-        check && setExpression(expression + check)
-    }
+            check && setExpression((prevExpression) => prevExpression + check)
+        },
+        [expression]
+    )
 
     // EQUAL TO
-    const equalTo = () => setExpression(evaluate(expression))
+    const equalTo = useCallback(
+        () => setExpression(evaluate(expression)),
+        [expression]
+    )
+
+    // KEYDOWN HANDLER
+    const handleKeyDown = useCallback(
+        (e: KeyboardEvent) => {
+            const nums: string[] = [
+                '0',
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9',
+            ]
+            const noNums: { [key: string]: string } = {
+                '.': '.',
+                '+': ' + ',
+                '-': ' - ',
+                '/': ' ÷ ',
+                '*': ' x ',
+                '(': 'par',
+                ')': 'par',
+                '!': '!',
+                r: '√',
+                s: ' ^ 2',
+                t: '10 ^ ',
+                p: 'π',
+                e: 'e',
+                '%': ' % ',
+            }
+
+            if (nums.includes(e.key)) typeNum(e.key)
+            else if (noNums[e.key]) typeNoNum(noNums[e.key])
+            else if (e.key === 'Backspace') del()
+            else if (e.key === 'Enter') equalTo()
+        },
+        [typeNum, typeNoNum, del, equalTo]
+    )
+
+    // KEYDOWN EVENTS
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown)
+
+        return () => window.removeEventListener('keydown', handleKeyDown)
+    }, [handleKeyDown])
 
     return (
         <main className={style.app}>
