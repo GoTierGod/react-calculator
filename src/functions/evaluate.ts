@@ -65,6 +65,19 @@ export const evaluate = (exp: string): string => {
         }
     }
 
+    // RESOLVE LOG
+    const logOps = evaluable.match(/log\(\d+\.*\d*\)[^)]/g)
+    if (logOps) {
+        for (const log of logOps) {
+            const number = log.match(/\d+\.*\d*/)
+
+            number &&
+                (evaluable = evaluable.replace(log, `Math.log10(${number[0]})`))
+        }
+
+        console.log(evaluable)
+    }
+
     // MODULUS
     evaluable = evaluable.replace('mod', '%')
 

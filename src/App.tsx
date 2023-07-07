@@ -66,6 +66,23 @@ function App() {
         }
     }, [expression])
 
+    // LOG
+    const typeLog = useCallback(() => {
+        const lastChar = expression[expression.length - 1]
+
+        if (lastChar) {
+            const lastNum = expression.match(/(\d+\.*\d*)$/)
+
+            lastNum &&
+                setExpression((prevExpression) =>
+                    prevExpression.replace(
+                        new RegExp(`${lastNum[0]}$`),
+                        `log(${lastNum[0]})`
+                    )
+                )
+        }
+    }, [expression])
+
     // EQUAL TO
     const equalTo = useCallback(() => {
         const result = evaluate(expression)
@@ -137,7 +154,9 @@ function App() {
                     >
                         ans
                     </button>
-                    <button className={style.noNum}>log</button>
+                    <button onClick={() => typeLog()} className={style.noNum}>
+                        log
+                    </button>
                     <button className={style.noNum}>ln</button>
                     <button
                         onClick={() => typeNoNum('e')}
