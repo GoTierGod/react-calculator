@@ -85,8 +85,6 @@ export const evaluate = (exp: string): string => {
             number &&
                 (evaluable = evaluable.replace(ln, `Math.log(${number[0]})`))
         }
-
-        console.log(evaluable)
     }
 
     // MODULUS
