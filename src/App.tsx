@@ -53,7 +53,7 @@ function App() {
     const typeExp = useCallback(() => {
         const lastChar = expression[expression.length - 1]
 
-        if (lastChar) {
+        if (/\d/.test(lastChar)) {
             const lastNum = expression.match(/(\d+\.*\d*)$/)
 
             lastNum &&
@@ -70,7 +70,7 @@ function App() {
     const typeLog = useCallback(() => {
         const lastChar = expression[expression.length - 1]
 
-        if (lastChar) {
+        if (/\d/.test(lastChar)) {
             const lastNum = expression.match(/(\d+\.*\d*)$/)
 
             lastNum &&
@@ -83,11 +83,11 @@ function App() {
         }
     }, [expression])
 
-    // LOG
+    // LN
     const typeLn = useCallback(() => {
         const lastChar = expression[expression.length - 1]
 
-        if (lastChar) {
+        if (/\d/.test(lastChar)) {
             const lastNum = expression.match(/(\d+\.*\d*)$/)
 
             lastNum &&
@@ -95,6 +95,23 @@ function App() {
                     prevExpression.replace(
                         new RegExp(`${lastNum[0]}$`),
                         `ln(${lastNum[0]})`
+                    )
+                )
+        }
+    }, [expression])
+
+    // POSITIVE / NEGATIVE
+    const posNeg = useCallback(() => {
+        const lastChar = expression[expression.length - 1]
+
+        if (/(\d|π|e)/.test(lastChar)) {
+            const lastNum = expression.match(/(\d+\.*\d*|π|e)$/)
+
+            lastNum &&
+                setExpression((prevExpression) =>
+                    prevExpression.replace(
+                        new RegExp(`${lastNum[0]}$`),
+                        `(-${lastNum[0]})`
                     )
                 )
         }
@@ -217,7 +234,9 @@ function App() {
                     >
                         <FontAwesomeIcon icon={faDeleteLeft} />
                     </button>
-                    <button className={style.noNum}>+/-</button>
+                    <button onClick={() => posNeg()} className={style.noNum}>
+                        +/-
+                    </button>
                     <button
                         onClick={() => typeNoNum('par')}
                         className={style.noNum}

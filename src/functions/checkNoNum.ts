@@ -15,7 +15,9 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
     // PARENTHESIS
     else if (noNum === 'par') {
         if (lastChar !== '(' || lastChar === undefined) {
-            const withoutSpecialPar = exp.replace(/(log|ln)\(\d+\.*\d+\)/g, '')
+            const withoutSpecialPar = exp
+                .replace(/(log|ln)\(\d+\.*\d+\)/g, '')
+                .replace(/\(-\d+\.*\d*\)/, '')
             const parenthesis = withoutSpecialPar.match(/(\(|\))/g)
 
             if (parenthesis) {
