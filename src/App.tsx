@@ -117,6 +117,23 @@ function App() {
         }
     }, [expression])
 
+    // ROUND
+    const round = useCallback(() => {
+        const lastChar = expression[expression.length - 1]
+
+        if (/\d/.test(lastChar)) {
+            const lastNum = expression.match(/(\d+\.*\d*)$/)
+
+            lastNum &&
+                setExpression((prevExpression) =>
+                    prevExpression.replace(
+                        new RegExp(`${lastNum[0]}$`),
+                        `${Math.round(Number(lastNum[0]))}`
+                    )
+                )
+        }
+    }, [expression])
+
     // EQUAL TO
     const equalTo = useCallback(() => {
         const result = evaluate(expression)
@@ -255,7 +272,9 @@ function App() {
                     >
                         ÷
                     </button>
-                    <button className={style.noNum}>|x|</button>
+                    <button onClick={() => round()} className={style.noNum}>
+                        rou
+                    </button>
                     <button onClick={() => typeExp()} className={style.noNum}>
                         exp
                     </button>
