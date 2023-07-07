@@ -11,20 +11,20 @@ describe('Operations using the modulus operator', () => {
     // let powButton: HTMLElement
     // let facButton: HTMLElement
     // let sqrtButton: HTMLElement
-    let plusButton: HTMLElement
-    let minusButton: HTMLElement
+    // let plusButton: HTMLElement
+    // let minusButton: HTMLElement
     let multButton: HTMLElement
     // let divButton: HTMLElement
     // let squaredButton: HTMLElement
     // let expBaseTen: HTMLElement
     let modButton: HTMLElement
-    let piButton: HTMLElement
+    // let piButton: HTMLElement
     // let eulerButton: HTMLElement
     let zeroButton: HTMLElement
     let oneButton: HTMLElement
     let twoButton: HTMLElement
     // let threeButton: HTMLElement
-    let fourButton: HTMLElement
+    // let fourButton: HTMLElement
     // let fiveButton: HTMLElement
     // let sixButton: HTMLElement
     // let sevenButton: HTMLElement
@@ -40,20 +40,20 @@ describe('Operations using the modulus operator', () => {
         // powButton = screen.getByText('x^')
         // facButton = screen.getByText('n!')
         // sqrtButton = screen.getByText('√x')
-        plusButton = screen.getByText('+')
-        minusButton = screen.getByText('-')
+        // plusButton = screen.getByText('+')
+        // minusButton = screen.getByText('-')
         multButton = screen.getByText('X')
         // divButton = screen.getByText('÷')
         // squaredButton = screen.getByText('x²')
         // expBaseTen = screen.getByText('10^')
         modButton = screen.getByText('mod')
-        piButton = screen.getByText('π')
+        // piButton = screen.getByText('π')
         // eulerButton = screen.getByText('e')
         zeroButton = screen.getByText('0')
         oneButton = screen.getByText('1')
         twoButton = screen.getByText('2')
         // threeButton = screen.getByText('3')
-        fourButton = screen.getByText('4')
+        // fourButton = screen.getByText('4')
         // fiveButton = screen.getByText('5')
         // sixButton = screen.getByText('6')
         // sevenButton = screen.getByText('7')
