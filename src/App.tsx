@@ -192,7 +192,12 @@ function App() {
                     >
                         n!
                     </button>
-                    <button className={style.noNum}>mod</button>
+                    <button
+                        onClick={() => typeNoNum(' mod ')}
+                        className={style.noNum}
+                    >
+                        mod
+                    </button>
                     <button onClick={() => typeNum('4')}>4</button>
                     <button onClick={() => typeNum('5')}>5</button>
                     <button onClick={() => typeNum('6')}>6</button>

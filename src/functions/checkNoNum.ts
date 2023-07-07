@@ -2,7 +2,11 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
     const lastChar: string = exp[exp.length - 1]
 
     // EASY TO ADD OPERATIONS
-    if ([' x ', ' - ', ' + ', ' ÷ ', ' ^ ', ' % ', ' ^ 2'].includes(noNum)) {
+    if (
+        [' x ', ' - ', ' + ', ' ÷ ', ' ^ ', ' % ', ' ^ 2', ' mod '].includes(
+            noNum
+        )
+    ) {
         if (/(\d|\)|!|π|e)/.test(lastChar) && lastChar !== undefined) {
             return noNum
         }

@@ -65,6 +65,9 @@ export const evaluate = (exp: string): string => {
         }
     }
 
+    // MODULUS
+    evaluable = evaluable.replace('mod', '%')
+
     // EVALUATE USING A FUNCTION CONSTRUCTOR AND RETURN THE RESULT
     let evaluation: number
     try {
