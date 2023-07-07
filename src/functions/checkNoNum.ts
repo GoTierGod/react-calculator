@@ -39,7 +39,7 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
         if (lastChar === ' ' || lastChar === undefined) return noNum
     }
 
-    // PI
+    // PI, EULER AND MORE
     else if (
         noNum === 'π' ||
         noNum === 'e' ||
@@ -47,7 +47,10 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
         noNum === '1 ÷ '
     ) {
         if (!/(\d|\.|π|!|e)/.test(lastChar) || lastChar === undefined) {
-            return noNum
+            const arrExp = exp.split(' ')
+            const lastSet = arrExp[arrExp.length - 1]
+
+            if (!/(\d*\.*\d+e\+\d*)/.test(lastSet)) return noNum
         }
     }
 

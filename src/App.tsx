@@ -49,6 +49,23 @@ function App() {
         [expression]
     )
 
+    // EXP
+    const typeExp = useCallback(() => {
+        const lastChar = expression[expression.length - 1]
+
+        if (lastChar) {
+            const lastNum = expression.match(/(\d+\.*\d*)$/)
+
+            lastNum &&
+                setExpression((prevExpression) =>
+                    prevExpression.replace(
+                        new RegExp(`${lastNum[0]}$`),
+                        `${lastNum[0]}e+`
+                    )
+                )
+        }
+    }, [expression])
+
     // EQUAL TO
     const equalTo = useCallback(() => {
         const result = evaluate(expression)
@@ -182,7 +199,9 @@ function App() {
                         ÷
                     </button>
                     <button className={style.noNum}>|x|</button>
-                    <button className={style.noNum}>exp</button>
+                    <button onClick={() => typeExp()} className={style.noNum}>
+                        exp
+                    </button>
                     <button onClick={() => typeNum('7')}>7</button>
                     <button onClick={() => typeNum('8')}>8</button>
                     <button onClick={() => typeNum('9')}>9</button>
