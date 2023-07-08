@@ -20,8 +20,8 @@ describe('Operations using ln (natural logarithm)', () => {
     // let expButton: HTMLElement
     // let logButton: HTMLElement
     let lnButton: HTMLElement
-    // let piButton: HTMLElement
-    // let eulerButton: HTMLElement
+    let piButton: HTMLElement
+    let eulerButton: HTMLElement
     let zeroButton: HTMLElement
     let oneButton: HTMLElement
     let twoButton: HTMLElement
@@ -51,8 +51,8 @@ describe('Operations using ln (natural logarithm)', () => {
         // expButton = screen.getByText('exp')
         // logButton = screen.getByText('log')
         lnButton = screen.getByText('ln')
-        // piButton = screen.getByText('π')
-        // eulerButton = screen.getByText('e')
+        piButton = screen.getByText('π')
+        eulerButton = screen.getByText('e')
         zeroButton = screen.getByText('0')
         oneButton = screen.getByText('1')
         twoButton = screen.getByText('2')
@@ -123,6 +123,23 @@ describe('Operations using ln (natural logarithm)', () => {
         consecClickEvents(clickEvents)
 
         const result = Math.log(222) - 10
+
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
+    })
+
+    test('ln(π) + ln(e)', () => {
+        const clickEvents = [
+            piButton,
+            lnButton,
+            plusButton,
+            eulerButton,
+            lnButton,
+            equalToButton,
+        ]
+
+        consecClickEvents(clickEvents)
+
+        const result = Math.log(Math.PI) + Math.log(Math.E)
 
         expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })

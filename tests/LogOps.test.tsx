@@ -19,8 +19,8 @@ describe('Operations using log (logarithm with base 10)', () => {
     // let expBaseTen: HTMLElement
     // let expButton: HTMLElement
     let logButton: HTMLElement
-    // let piButton: HTMLElement
-    // let eulerButton: HTMLElement
+    let piButton: HTMLElement
+    let eulerButton: HTMLElement
     let zeroButton: HTMLElement
     let oneButton: HTMLElement
     let twoButton: HTMLElement
@@ -49,8 +49,8 @@ describe('Operations using log (logarithm with base 10)', () => {
         // expBaseTen = screen.getByText('10^')
         // expButton = screen.getByText('exp')
         logButton = screen.getByText('log')
-        // piButton = screen.getByText('π')
-        // eulerButton = screen.getByText('e')
+        piButton = screen.getByText('π')
+        eulerButton = screen.getByText('e')
         zeroButton = screen.getByText('0')
         oneButton = screen.getByText('1')
         twoButton = screen.getByText('2')
@@ -119,6 +119,23 @@ describe('Operations using log (logarithm with base 10)', () => {
         consecClickEvents(clickEvents)
 
         const result = Math.log10(210) - 1
+
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
+    })
+
+    test('log(π) + log(e)', () => {
+        const clickEvents = [
+            piButton,
+            logButton,
+            plusButton,
+            eulerButton,
+            logButton,
+            equalToButton,
+        ]
+
+        consecClickEvents(clickEvents)
+
+        const result = Math.log10(Math.PI) + Math.log10(Math.E)
 
         expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })

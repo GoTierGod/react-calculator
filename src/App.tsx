@@ -70,8 +70,8 @@ function App() {
     const typeLog = useCallback(() => {
         const lastChar = expression[expression.length - 1]
 
-        if (/\d/.test(lastChar)) {
-            const lastNum = expression.match(/(\d+\.*\d*)$/)
+        if (/(\d|π|e)/.test(lastChar)) {
+            const lastNum = expression.match(/(\d+\.*\d*|π|e)$/)
 
             lastNum &&
                 setExpression((prevExpression) =>
@@ -87,8 +87,8 @@ function App() {
     const typeLn = useCallback(() => {
         const lastChar = expression[expression.length - 1]
 
-        if (/\d/.test(lastChar)) {
-            const lastNum = expression.match(/(\d+\.*\d*)$/)
+        if (/(\d|π|e)/.test(lastChar)) {
+            const lastNum = expression.match(/(\d+\.*\d*|π|e)$/)
 
             lastNum &&
                 setExpression((prevExpression) =>
