@@ -1,4 +1,4 @@
-# React + Typescript Calculator
+# React Calculator
 
 This is a project for building a calculator using React, Vite, TypeScript, and Vitest. The calculator will support basic arithmetic operations such as addition, subtraction, multiplication, and division, as well as advanced operations like exponentiation and logarithms.
 
