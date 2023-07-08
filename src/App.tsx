@@ -32,12 +32,12 @@ function App() {
         const lastChar = expression[expression.length - 1]
 
         if (!/(\d|\S)/.test(lastChar)) {
-            checkError &&
+            !checkError &&
                 setExpression((prevExpression) =>
                     prevExpression.substring(0, expression.length - 3)
                 )
         } else {
-            checkError &&
+            !checkError &&
                 setExpression((prevExpression) =>
                     prevExpression.substring(0, expression.length - 1)
                 )
