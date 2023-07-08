@@ -1,3 +1,4 @@
+/* -------------------- PAGE -------------------- */
 .app {
     display: flex;
     justify-content: center;
@@ -12,6 +13,7 @@
     overflow-x: hidden;
 }
 
+/* -------------------- CALCULATOR -------------------- */
 .calculator {
     display: grid;
     grid-template-rows: 1fr 2fr;
@@ -24,6 +26,7 @@
     border-radius: 3px;
 }
 
+/* -------------------- SCREEN -------------------- */
 .screen {
     display: flex;
     flex-direction: column;
@@ -81,6 +84,7 @@
     border-radius: 3px;
 }
 
+/* -------------------- BUTTONS -------------------- */
 .buttons {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
