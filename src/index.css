@@ -3,8 +3,8 @@
     line-height: 1.5;
     font-weight: 500;
 
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
+    color-scheme: dark;
+    color: #ffffffde;
     background: #1a1a1a;
 
     --white: #fff;
@@ -53,12 +53,12 @@ h1 {
     line-height: 1.1;
 }
 
-@media (prefers-color-scheme: light) {
-    /* :root {
+/* @media (prefers-color-scheme: light) {
+    :root {
         color: #213547;
         background-color: #ffffff;
-    } */
+    }
     a:hover {
         color: #747bff;
     }
-}
+} */
