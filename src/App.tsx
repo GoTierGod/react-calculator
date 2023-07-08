@@ -104,14 +104,15 @@ function App() {
     const posNeg = useCallback(() => {
         const lastChar = expression[expression.length - 1]
 
-        if (/(\d|π|e)/.test(lastChar)) {
-            const lastNum = expression.match(/(\d+\.*\d*|π|e)$/)
+        if (/(\d|π|e|\))/.test(lastChar)) {
+            const lastNum = expression.match(/\(?-?(\d+\.?\d*|π|e)\)?$/)
+            const num = lastNum && lastNum[0].match(/(\d+\.?\d*|π|e)/)
 
-            lastNum &&
+            num &&
                 setExpression((prevExpression) =>
                     prevExpression.replace(
-                        new RegExp(`${lastNum[0]}$`),
-                        `(-${lastNum[0]})`
+                        new RegExp(`${lastNum[0].replace(/[()]/g, '\\$&')}$`),
+                        lastNum[0].includes('-') ? `${num[0]}` : `(-${num[0]})`
                     )
                 )
         }
