@@ -229,7 +229,16 @@ function App() {
                 <div className={style.buttons}>
                     <button
                         onClick={() => {
-                            lastAns.length > 0 && typeNum(lastAns)
+                            if (
+                                !(
+                                    lastAns === 'Syntax error' ||
+                                    lastAns === 'Non-closed parenthesis' ||
+                                    lastAns === 'NaN' ||
+                                    lastAns === 'last answer' ||
+                                    lastAns.length === 0
+                                )
+                            )
+                                typeNum(lastAns)
                         }}
                         className={style.ans}
                     >
