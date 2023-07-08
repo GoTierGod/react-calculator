@@ -27,7 +27,7 @@ describe('Button that tranforms the last number into positive or negative', () =
     // let fourButton: HTMLElement
     // let fiveButton: HTMLElement
     // let sixButton: HTMLElement
-    // let sevenButton: HTMLElement
+    let sevenButton: HTMLElement
     // let eightButton: HTMLElement
     // let nineButton: HTMLElement
 
@@ -56,12 +56,24 @@ describe('Button that tranforms the last number into positive or negative', () =
         // fourButton = screen.getByText('4')
         // fiveButton = screen.getByText('5')
         // sixButton = screen.getByText('6')
-        // sevenButton = screen.getByText('7')
+        sevenButton = screen.getByText('7')
         // eightButton = screen.getByText('8')
         // nineButton = screen.getByText('9')
     })
 
     afterEach(() => cleanup())
+
+    test('Switch between positive and negative: 7 => (-7) => 7', () => {
+        const clickEvents = [sevenButton, posNegButton]
+
+        consecClickEvents(clickEvents)
+
+        expect(expScreen.innerHTML).toBe('(-7)')
+
+        consecClickEvents([posNegButton])
+
+        expect(expScreen.innerHTML).toBe('7')
+    })
 
     test('(-10) x 2', () => {
         const clickEvents = [oneButton, zeroButton, posNegButton]

@@ -106,7 +106,7 @@ function App() {
 
         if (/(\d|π|e|\))/.test(lastChar)) {
             const lastNum = expression.match(
-                /(\(-\d+\.?\d*|π|e\)|\d+\.?\d*|π|e)$/
+                /(\(-(\d+\.?\d*|π|e)\)|\d+\.?\d*|π|e)$/
             )
             const num = lastNum && lastNum[0].match(/(\d+\.?\d*|π|e)/)
 
