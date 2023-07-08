@@ -32,8 +32,10 @@ export const checkNoNum = (exp: string, noNum: string): string | boolean => {
 
     // FACTORIALS
     else if (noNum === '!') {
-        if (/\d/.test(lastChar)) {
-            return noNum
+        const lastNum = exp.match(/(\d+\.*\d*)$/)
+
+        if (/\d/.test(lastChar) && lastNum) {
+            if (!lastNum[0].includes('.')) return noNum
         }
     }
 

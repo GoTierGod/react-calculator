@@ -1,4 +1,6 @@
 export const evaluate = (exp: string): string => {
+    if (exp.length === 0) return ''
+
     // Check for invalid set of parenthesis
     let [opening, closing] = [0, 0]
 

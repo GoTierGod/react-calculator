@@ -9,7 +9,7 @@ import { checkNoNum } from './functions/checkNoNum'
 import { evaluate } from './functions/evaluate'
 
 function App() {
-    const [lastAns, setLastAns] = useState('')
+    const [lastAns, setLastAns] = useState('last answer')
     const [expression, setExpression] = useState('')
 
     // CLEAN THE SCREEN
@@ -145,6 +145,8 @@ function App() {
     // KEYDOWN HANDLER
     const handleKeyDown = useCallback(
         (e: KeyboardEvent) => {
+            e.preventDefault()
+
             const nums: string[] = [
                 '0',
                 '1',
@@ -193,8 +195,12 @@ function App() {
         <main className={style.app}>
             <div className={style.calculator}>
                 <div className={style.screen}>
-                    <span data-testid='ans'>{lastAns}</span>
-                    <p data-testid='expression'>{expression}</p>
+                    <span data-testid='ans'>
+                        {lastAns.length === 0 ? 'last answer' : lastAns}
+                    </span>
+                    <p data-testid='expression'>
+                        {expression.length === 0 ? 'expression' : expression}
+                    </p>
                 </div>
                 <div className={style.buttons}>
                     <button
