@@ -75,6 +75,30 @@ describe('Button that tranforms the last number into positive or negative', () =
         expect(expScreen.innerHTML).toBe('7')
     })
 
+    test('((-12) + (-70))', () => {
+        const clickEvents = [
+            parButton,
+            oneButton,
+            twoButton,
+            posNegButton,
+            plusButton,
+            sevenButton,
+            zeroButton,
+            posNegButton,
+            parButton,
+        ]
+
+        consecClickEvents(clickEvents)
+
+        expect(expScreen.innerHTML).toBe('((-12) + (-70))')
+
+        consecClickEvents([equalToButton])
+
+        const result = -12 + -70
+
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
+    })
+
     test('(-10) x 2', () => {
         const clickEvents = [oneButton, zeroButton, posNegButton]
 
