@@ -49,12 +49,16 @@ function App() {
         (num: string) => {
             const check = checkNum(expression, num)
 
-            checkError
-                ? check && setExpression(String(check))
-                : check &&
-                  setExpression((prevExpression) => prevExpression + check)
+            if (expression === lastAns) {
+                check && setExpression(String(check))
+            } else {
+                checkError
+                    ? check && setExpression(String(check))
+                    : check &&
+                      setExpression((prevExpression) => prevExpression + check)
+            }
         },
-        [expression, checkError]
+        [expression, lastAns, checkError]
     )
 
     const typeNoNum = useCallback(
