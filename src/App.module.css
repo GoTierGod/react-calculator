@@ -84,7 +84,7 @@
 .buttons {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 0.25rem;
+    gap: 0.125rem;
 }
 
 .buttons button {
@@ -93,12 +93,21 @@
     font-size: 1.125rem;
     font-family: inherit;
 
-    border: none;
+    border: 0.125rem solid var(--black);
     border-radius: 3px;
+    outline: none;
+
+    cursor: pointer;
+    transition: all 75ms;
 }
 
 .buttons button:hover {
-    cursor: pointer;
+    filter: contrast(112.5%);
+    transform: scale(1.125);
+}
+
+.buttons button:active {
+    transform: scale(1.25);
 }
 
 .buttons button:not(.equalTo, .clean, .delete, .noNum, .ans) {
