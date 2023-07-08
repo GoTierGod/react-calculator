@@ -9,7 +9,7 @@ import { checkNoNum } from './functions/checkNoNum'
 import { evaluate } from './functions/evaluate'
 
 function App() {
-    const [lastAns, setLastAns] = useState('last answer')
+    const [lastAns, setLastAns] = useState('')
     const [expression, setExpression] = useState('')
 
     // CHECK IF THERE'S AN ERROR IN THE LAST EVALUATION
@@ -224,7 +224,13 @@ function App() {
             <div className={style.calculator}>
                 <div className={style.screen}>
                     <span data-testid='ans'>
-                        {lastAns.length === 0 ? 'last answer' : lastAns}
+                        {lastAns.length === 0
+                            ? 'last answer'
+                            : !(
+                                  lastAns === 'Syntax error' ||
+                                  lastAns === 'Non-closed parenthesis' ||
+                                  lastAns === 'NaN'
+                              ) && `ans: ${lastAns}`}
                     </span>
                     <p data-testid='expression'>
                         {expression.length === 0 ? 'expression' : expression}
@@ -238,7 +244,6 @@ function App() {
                                     lastAns === 'Syntax error' ||
                                     lastAns === 'Non-closed parenthesis' ||
                                     lastAns === 'NaN' ||
-                                    lastAns === 'last answer' ||
                                     lastAns.length === 0
                                 )
                             )

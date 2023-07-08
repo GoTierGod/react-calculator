@@ -85,7 +85,7 @@ describe('Screen tests', () => {
 
         const result = 3 * 4
 
-        expect(ansScreen.innerHTML).toBe(correctNumFormat(result))
+        expect(ansScreen.innerHTML).toBe(`ans: ${correctNumFormat(result)}`)
         expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
 })
