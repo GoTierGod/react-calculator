@@ -174,6 +174,7 @@ function App() {
                 p: 'π',
                 e: 'e',
                 '%': ' % ',
+                m: ' mod ',
             }
 
             if (nums.includes(e.key)) typeNum(e.key)
