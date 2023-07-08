@@ -50,9 +50,8 @@ export const evaluate = (exp: string): string => {
     if (sqrtOps) {
         for (const sr of sqrtOps) {
             const exp: string = sr.replace('√', '')
-            const resolvedExp: number = new Function(`return ${exp}`)()
 
-            evaluable = evaluable.replace(sr, String(Math.sqrt(resolvedExp)))
+            evaluable = evaluable.replace(sr, `Math.sqrt(${exp})`)
         }
     }
 
