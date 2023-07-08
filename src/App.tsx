@@ -241,7 +241,9 @@ function App() {
                                   lastAns === 'Syntax error' ||
                                   lastAns === 'Non-closed parenthesis' ||
                                   lastAns === 'NaN'
-                              ) && `ans: ${lastAns}`}
+                              )
+                            ? `ans: ${lastAns}`
+                            : lastAns}
                     </span>
                     <p data-testid='expression'>
                         {expression.length === 0 ? 'expression' : expression}
