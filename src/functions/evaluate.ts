@@ -46,7 +46,7 @@ export const evaluate = (exp: string): string => {
     }
 
     // RESOLVE SQUARE ROOTS
-    const sqrtOps = evaluable.match(/(√\((.*?)\)|√\d+)/g)
+    const sqrtOps = evaluable.match(/(√\((.*?)\)|√\d+\.\d+|√\d+)/g)
     if (sqrtOps) {
         for (const sr of sqrtOps) {
             const exp: string = sr.replace('√', '')

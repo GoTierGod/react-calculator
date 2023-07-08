@@ -12,6 +12,7 @@ describe('Square root operations', () => {
     let plusButton: HTMLElement
     let multButton: HTMLElement
     let divButton: HTMLElement
+    let pointButton: HTMLElement
     let zeroButton: HTMLElement
     let oneButton: HTMLElement
     let twoButton: HTMLElement
@@ -31,6 +32,7 @@ describe('Square root operations', () => {
         plusButton = screen.getByText('+')
         multButton = screen.getByText('X')
         divButton = screen.getByText('÷')
+        pointButton = screen.getByText('.')
         zeroButton = screen.getByText('0')
         oneButton = screen.getByText('1')
         twoButton = screen.getByText('2')
@@ -93,6 +95,22 @@ describe('Square root operations', () => {
         consecClickEvents(clickEvents)
 
         const result = Math.sqrt(3 * 3) + Math.sqrt(25) / Math.sqrt(4)
+
+        expect(expScreen.innerHTML).toBe(correctNumFormat(result))
+    })
+
+    test('√4.5', () => {
+        const clickEvents = [
+            sqrtButton,
+            fourButton,
+            pointButton,
+            fiveButton,
+            equalToButton,
+        ]
+
+        consecClickEvents(clickEvents)
+
+        const result = Math.sqrt(4.5)
 
         expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
