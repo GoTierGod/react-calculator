@@ -2,11 +2,12 @@ import style from './App.module.css'
 
 import { useEffect, useState, useCallback, useMemo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
+import { faDeleteLeft, faExternalLink } from '@fortawesome/free-solid-svg-icons'
 
 import { checkNum } from './functions/checkNum'
 import { checkNoNum } from './functions/checkNoNum'
 import { evaluate } from './functions/evaluate'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 function App() {
     const [lastAns, setLastAns] = useState('')
@@ -221,6 +222,16 @@ function App() {
 
     return (
         <main className={style.app}>
+            <div className={style.repository}>
+                <FontAwesomeIcon icon={faGithub} />{' '}
+                <a
+                    target='_blank'
+                    href='https://github.com/GoTierGod/react-calculator'
+                >
+                    <span>React Calculator</span>{' '}
+                    <FontAwesomeIcon icon={faExternalLink} />
+                </a>
+            </div>
             <div className={style.calculator}>
                 <div className={style.screen}>
                     <span data-testid='ans'>
