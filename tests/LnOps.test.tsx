@@ -109,7 +109,7 @@ describe('Operations using ln (natural logarithm)', () => {
 
         consecClickEvents(clickEvents)
 
-        const result = Math.log(Math.PI) + Math.log10(Math.E)
+        const result = Math.log(Math.PI) + Math.log(Math.E)
 
         expect(expScreen.innerHTML).toBe(correctNumFormat(result))
     })
