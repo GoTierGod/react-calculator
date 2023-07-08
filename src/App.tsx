@@ -1,6 +1,6 @@
 import style from './App.module.css'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useMemo } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
 
@@ -12,6 +12,18 @@ function App() {
     const [lastAns, setLastAns] = useState('last answer')
     const [expression, setExpression] = useState('')
 
+    // CHECK IF THERE'S AN ERROR IN THE LAST EVALUATION
+    const checkError = useMemo(() => {
+        if (
+            expression === 'Syntax error' ||
+            expression === 'Non-closed parenthesis' ||
+            expression === 'NaN'
+        )
+            return true
+
+        return false
+    }, [expression])
+
     // CLEAN THE SCREEN
     const clean = useCallback(() => setExpression(''), [])
 
@@ -20,33 +32,41 @@ function App() {
         const lastChar = expression[expression.length - 1]
 
         if (!/(\d|\S)/.test(lastChar)) {
-            setExpression((prevExpression) =>
-                prevExpression.substring(0, expression.length - 3)
-            )
+            checkError &&
+                setExpression((prevExpression) =>
+                    prevExpression.substring(0, expression.length - 3)
+                )
         } else {
-            setExpression((prevExpression) =>
-                prevExpression.substring(0, expression.length - 1)
-            )
+            checkError &&
+                setExpression((prevExpression) =>
+                    prevExpression.substring(0, expression.length - 1)
+                )
         }
-    }, [expression])
+    }, [expression, checkError])
 
     // TYPING
     const typeNum = useCallback(
         (num: string) => {
             const check = checkNum(expression, num)
 
-            check && setExpression((prevExpression) => prevExpression + check)
+            checkError
+                ? check && setExpression(String(check))
+                : check &&
+                  setExpression((prevExpression) => prevExpression + check)
         },
-        [expression]
+        [expression, checkError]
     )
 
     const typeNoNum = useCallback(
         (noNum: string) => {
             const check = checkNoNum(expression, noNum)
 
-            check && setExpression((prevExpression) => prevExpression + check)
+            checkError
+                ? check && setExpression(String(check))
+                : check &&
+                  setExpression((prevExpression) => prevExpression + check)
         },
-        [expression]
+        [expression, checkError]
     )
 
     // EXP
