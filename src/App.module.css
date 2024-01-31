@@ -9,7 +9,6 @@
     min-height: 100vh;
     min-width: 100vw;
 
-    background: #1a1a1a;
     color: var(--white);
 
     overflow-x: hidden;
@@ -131,6 +130,8 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 0.125rem;
+
+    user-select: none;
 }
 
 .buttons button {

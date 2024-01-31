@@ -8,9 +8,9 @@
     background: #1a1a1a;
 
     --white: #fff;
-    --black: #080808;
-    --dark: #171717;
-    --dark-2: #1d1d1d;
+    --black: #121212;
+    --dark: #181818;
+    --dark-2: #1c1c1c;
     --dark-3: #222;
     --dark-4: #242424;
     --gray: #949494;
@@ -37,6 +37,12 @@ body {
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
+
+    background: linear-gradient(30deg, #1a1a1ad4, #1a1a1ad4),
+        url('/src/assets/bg.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1 {
